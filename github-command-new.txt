@@ -1,0 +1,18 @@
+echo "# search-sd" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/falahgs/search-sd.git
+git push -u origin main
+
+
+----------
+git branch --move main master
+git add .
+git commit -m "first commit"
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+git push -u origin main
