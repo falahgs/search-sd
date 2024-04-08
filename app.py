@@ -105,7 +105,9 @@ with st.empty():
                 left, right = st.columns([0.5, 0.5])
                 if distances[index]==0 or distances[index]<=0.3:
                     with left:
-                        st.image(Image.open(metadatas[index]['filePath']), width=500)
+                        path="/opt/render/project/src/"+metadatas[index]['filePath']
+
+                        st.image(Image.open(path), width=500)
                         #st.markdown(metadatas[index]['prompt'])
                        # st.markdown(metadatas[index]['positive'])
                     with right:
