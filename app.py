@@ -11,6 +11,7 @@ import google.generativeai as genai
 # Set your API key
 GOOGLE_API_KEY = "AIzaSyCNIQCY0yxjqW8pCaYEFAilj2TyO-t5p6I"
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #pip install llm-clip
 # Streamlit config
@@ -91,7 +92,7 @@ with st.empty():
                 #query_embeddings = model.embed(uploaded_file.getvalue())
             result = collection.query(
                 query_embeddings=[query_embeddings],
-                n_results=1
+                n_results=3
             )
         end = time.time()
 
@@ -106,15 +107,18 @@ with st.empty():
                 if distances[index]==0 or distances[index]<=0.3:
                     with left:
                         st.markdown(metadatas[index]['filePath'])
-                        path="/opt/render/project/src/"+metadatas[index]['filePath']
-                        st.markdown(path)
-                        st.image(Image.open(path), width=500)
+                        file_path=metadatas[index]['filePath']
+                        #path="/opt/render/project/src/"+metadatas[index]['filePath']
+                        #st.markdown(path)
+                        #file_path = os.path.join(BASE_DIR, metadatas[index]['filePath'])
+                        #file_path = Path(file_path)
+                        st.image(Image.open(file_path), width=500)
                         #st.markdown(metadatas[index]['prompt'])
                        # st.markdown(metadatas[index]['positive'])
                     with right:
                         st.markdown(metadatas[index]['positive'])
-                        #st.markdown(f"""**Id**: {id}  
-                           # **Distance**: {distances[index]}""")
+                        st.markdown(f"""**Id**: {id}  
+                            **Distance**: {distances[index]}""")
                 else:
                     st.write("No results to show. Enter a search term above.")
                    # st.markdown(f"""**Id**: {id}**Distance**: {distances[index]}
