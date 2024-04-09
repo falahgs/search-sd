@@ -9,7 +9,7 @@ from pathlib import Path
 import google.generativeai as genai
 
 # Set your API key
-GOOGLE_API_KEY = "AIzaSyCNIQCY0yxjqW8pCaYEFAilj2TyO-t5p6I"
+GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxx"
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
