@@ -10,7 +10,7 @@ import google.generativeai as genai
 
 # Set your API key
 #GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxx"
-os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
+#os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #pip install llm-clip
