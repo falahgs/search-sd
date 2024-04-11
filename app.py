@@ -9,9 +9,9 @@ from pathlib import Path
 import google.generativeai as genai
 
 # Set your API key
-#GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxx"
+#GOOGLE_API_KEY = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 #os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
-BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 #pip install llm-clip
 # Streamlit config
@@ -106,19 +106,24 @@ with st.empty():
                 left, right = st.columns([0.5, 0.5])
                 if distances[index]==0 or distances[index]<=0.3:
                     with left:
-                        st.markdown(metadatas[index]['filePath'])
+                        #st.markdown(metadatas[index]['filePath'])
                         file_path=metadatas[index]['filePath']
+                        #file_path=""+file_path
+                        #st.markdown(file_path)
+                        #file_path="images\\00049-305025041.png"
+                        file_path = file_path.replace("\\", "/")
+                        
                         #path="/opt/render/project/src/"+metadatas[index]['filePath']
                         #st.markdown(path)
                         #file_path = os.path.join(BASE_DIR, metadatas[index]['filePath'])
                         #file_path = Path(file_path)
-                        st.image(Image.open(file_path), width=500)
+                        st.image(Image.open(file_path), width=400)
                         #st.markdown(metadatas[index]['prompt'])
                        # st.markdown(metadatas[index]['positive'])
                     with right:
                         st.markdown(metadatas[index]['positive'])
-                        st.markdown(f"""**Id**: {id}  
-                            **Distance**: {distances[index]}""")
+                        #st.markdown(f"""**Id**: {id}  
+                            #**Distance**: {distances[index]}""")
                 else:
                     st.write("No results to show. Enter a search term above.")
                    # st.markdown(f"""**Id**: {id}**Distance**: {distances[index]}
